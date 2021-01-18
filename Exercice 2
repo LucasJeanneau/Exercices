@@ -1,0 +1,19 @@
+def nth_prime(nth):
+ primes = list()
+ i = 1
+ while len(primes) < nth:
+    i+=1 
+    is_prime = True
+    for j in range(2,(round(i/2)+2)):
+      if i/j == round(i/j) and i!=j:
+        is_prime = False
+
+      if is_prime == False:
+        break
+
+    if is_prime == True:
+       primes.append(i)
+
+ print(primes[nth-1])
+ 
+nth_prime(10001)
