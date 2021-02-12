@@ -3,3 +3,30 @@ for i in range(0, 1000):
     if i % 3 == 0 or i % 5 == 0:
         sum += i
 print(sum)
+
+from PIL import Image
+from colorthief import ColorThief
+
+
+im = Image.open(r"C:\Users\Lucas\Desktop\civ.jpg")
+
+
+width, height = im.size #get image size
+
+
+box = (10, 555, 70, 630)
+pegi = im.crop(box)
+
+pegi.save(r"C:\Users\Lucas\Desktop\pegi.jpg") 
+
+width, height = pegi.size #get image size
+
+
+box2 = (2, 55, 50, 60)
+Color_pegi = pegi.crop(box2)
+
+Color_pegi.save(r"C:\Users\Lucas\Desktop\pegicolor.jpg") 
+
+color_thief = ColorThief(r"C:\Users\Lucas\Desktop\pegicolor.jpg")
+# get the dominant color
+dominant_color = color_thief.get_color(quality=1)
